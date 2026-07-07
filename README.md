@@ -57,3 +57,21 @@ The PRO license is bound to your computer's hardware as an anti-piracy measure. 
 2. Log in using the email account that received the license key.
 3. Navigate to the **"Licenses"** tab and click **"Deactivate"** for the old machine to free up the slot.
 4. Enter the key into the software again and click **"Active"**.
+
+**3. What is the maximum file size or row count supported?**
+
+There is no hard limit built into the software. ListDedupe processes data using in-memory hash tables, so throughput scales with your system RAM. In practice it handles 10 million+ rows on a standard machine.
+
+For very large outputs, enable Auto-split so results are chunked into parts of ≤ 100,000 lines each, keeping them manageable in Notepad or Excel.
+
+**4. Will the interface freeze while a large comparison is running?**
+
+No. ListDedupe offloads all processing to a background thread, so the UI stays fully responsive during computation. You will never see a "Not Responding" state in the title bar, regardless of file size.
+
+**5. Does case-insensitive matching alter the text in my output file?**
+
+No. ListDedupe uses a smart cache that compares lowercase copies internally while keeping the original capitalization of each row intact in the exported result. Enabling case-insensitive matching only affects how rows are matched — never how they are written to disk.
+
+**6. Does the free version have any row-count restrictions?**
+
+No. The free version gives you the full performance of the Cython core — there are no row caps or time limits. The only difference between Free and Pro is which modes and options are unlocked. You can process files of any size in the free Duplicates (D) mode.
